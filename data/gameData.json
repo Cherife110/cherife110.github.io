@@ -1,0 +1,149 @@
+{
+  "hearts": [
+    {
+      "id": "blue1",
+      "color": "blue",
+      "word": "Tu",
+      "x": 150,
+      "y": 100
+    },
+    {
+      "id": "blue2",
+      "color": "blue",
+      "word": "es",
+      "x": 500,
+      "y": 150
+    },
+    {
+      "id": "blue3",
+      "color": "blue",
+      "word": "belle",
+      "x": 300,
+      "y": 400
+    },
+    {
+      "id": "green1",
+      "color": "green",
+      "word": "Je t'aimes",
+      "x": 200,
+      "y": 300
+    },
+    {
+      "id": "green2",
+      "color": "green",
+      "word": "comme",
+      "x": 550,
+      "y": 350
+    },
+    {
+      "id": "green3",
+      "color": "green",
+      "word": "j'aime ayimolou!",
+      "x": 100,
+      "y": 450
+    },
+    {
+      "id": "yellow1",
+      "color": "yellow",
+      "word": " merci",
+      "x": 400,
+      "y": 100
+    },
+    {
+      "id": "yellow2",
+      "color": "yellow",
+      "word": "pour les ",
+      "x": 650,
+      "y": 250
+    },
+    {
+      "id": "yellow3",
+      "color": "yellow",
+      "word": " giffles",
+      "x": 250,
+      "y": 500
+    },
+    {
+      "id": "red1",
+      "color": "red",
+      "word": "Chaque",
+      "x": 300,
+      "y": 150
+    },
+    {
+      "id": "red2",
+      "color": "red",
+      "word": "jour",
+      "x": 450,
+      "y": 300
+    },
+    {
+      "id": "red3",
+      "color": "red",
+      "word": "avec",
+      "x": 200,
+      "y": 400
+    },
+    {
+      "id": "red4",
+      "color": "red",
+      "word": "toi",
+      "x": 550,
+      "y": 200
+    },
+    {
+      "id": "red5",
+      "color": "red",
+      "word": "est",
+      "x": 350,
+      "y": 450
+    },
+    {
+      "id": "red6",
+      "color": "red",
+      "word": "magique",
+      "x": 600,
+      "y": 400
+    }
+  ],
+  "colorSequence": [
+    {
+      "color": "blue",
+      "message": "Tu es belle, (mais ce n'est pas tout ce que j'ai à dire !) 💙",
+      "isTrap": false
+    },
+    {
+      "color": "green",
+      "message": "Je t'aimes comme j'aime ayimolou!",
+      "isTrap": true
+    },
+    {
+      "color": "yellow",
+      "message": " merci pour les giffles ",
+      "isTrap": false
+    },
+
+    {
+      "color": "red",
+      "message": "final",
+      "isTrap": false,
+      "isFinal": true
+    }
+  ],
+  "dialogues": {
+    "intro": [
+      "Bienvenue bby...",
+      "J'ai caché un message spécial pour toi dans ce petit monde.",
+      "Collecte les cœurs de la meme couleur pour former des phrases...",
+      "Commence par chercher les cœurs BLEUS. 💙"
+    ],
+    "finalQuestion": [
+      "Veux",
+      "tu",
+      "être",
+      "ma",
+      "valentine",
+      "?"
+    ]
+  }
+}
