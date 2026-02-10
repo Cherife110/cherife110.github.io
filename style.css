@@ -1,0 +1,266 @@
+:root {
+    --rose-dawn: #ffd4d8;
+    --rose-blush: #ffb3ba;
+    --rose-deep: #ff6b7a;
+    --rose-wine: #c9485b;
+    --cream: #fff8f0;
+    --soft-shadow: rgba(201, 72, 91, 0.15);
+    --gradient-romantic: linear-gradient(135deg, #ffd4d8 0%, #ffb3ba 50%, #ff9aa2 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--gradient-romantic);
+    background-attachment: fixed;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Effet de texture douce en arrière-plan */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 122, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 60px var(--soft-shadow),
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    z-index: 1;
+}
+
+/* Narrateur overlay - Style Pokémon */
+#narrator-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-width: 90%;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+    border: 4px solid #333;
+    border-radius: 16px;
+    padding: 30px 40px 80px 40px;
+    z-index: 100;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#narrator-overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#narrator-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+    text-align: left;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    margin: 0;
+    min-height: 80px;
+}
+
+#narrator-button {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    background: linear-gradient(to bottom, var(--rose-deep), var(--rose-wine));
+    color: white;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+#narrator-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#narrator-button:active {
+    transform: translateY(0);
+}
+
+#narrator-button.pulse {
+    animation: buttonPulse 1s ease infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Boutons de la scène finale */
+#final-buttons {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 40px;
+    z-index: 200;
+    transition: opacity 0.5s ease;
+}
+
+#final-buttons.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-choice {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px var(--soft-shadow);
+    position: relative;
+}
+
+.btn-oui {
+    background: linear-gradient(135deg, var(--rose-deep) 0%, var(--rose-wine) 100%);
+    color: white;
+}
+
+.btn-oui:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 15px 40px rgba(201, 72, 91, 0.4);
+}
+
+.btn-oui:active {
+    transform: scale(1.05);
+}
+
+.btn-non {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    color: #888;
+    cursor: not-allowed;
+    position: absolute;
+    transition: all 0.15s ease-out;
+}
+
+/* Message final */
+#final-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffccd5 0%, #ffa8b4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+#final-message:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.final-content {
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--rose-wine);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.final-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--rose-deep);
+    margin-bottom: 10px;
+}
+
+.final-subtext {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--rose-wine);
+    font-style: italic;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Styles pour le canvas Phaser */
+canvas {
+    display: block;
+    border-radius: 24px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Message du Cœur</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="narrator-overlay">
+            <p id="narrator-text"></p>
+            <button id="narrator-button" class="pulse">OK</button>
+        </div>
+    </div>
+    
+    <!-- Scene finale avec boutons -->
+    <div id="final-buttons" class="hidden">
+        <button id="btn-non" class="btn-choice btn-non">Non 😅</button>
+        <button id="btn-oui" class="btn-choice btn-oui">Oui 💖</button>
+    </div>
+    
+    <div id="final-message" class="hidden">
+        <div class="final-content">
+            <h1 class="final-title">💕 pour bby 💕</h1>
+            <p class="final-text">Je savais que tu dirais oui ! ❤️</p>
+            <p class="final-subtext">Tu es ma Valentine parfaite 🌹</p>
+        </div>
+    </div>
+
+    <!-- Charger Phaser d'abord (déjà dans le head) -->
+    
+    <!-- Ensuite charger TOUTES les scènes AVANT main.js -->
+    <script src="scenes/BootScene.js"></script>
+    <script src="scenes/MenuScene.js"></script>
+    <script src="scenes/GameScene.js"></script>
+    <script src="scenes/FinalScene.js"></script>
+    
+    <!-- main.js EN DERNIER (après toutes les scènes) -->
+    <script src="main.js"></script>
+</body>
+</html>
